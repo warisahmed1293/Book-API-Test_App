@@ -1,15 +1,28 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import TopNavbar from './src/component/TopNavbar'
+import { StyleSheet } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import Books from './src/component/Books'
-import BookCard from './src/component/BookCard'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import BookDetails from './src/component/BookDetails'
+import SplashScreen from './src/screen/Splash'
 
 const Stack = createStackNavigator();
 
 const App = () => {
+
+  const [isAppReady, setAppReady] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAppReady(true);
+    }, 2000);
+  }, []);
+
+  if (!isAppReady) {
+    return <SplashScreen />;
+  }
+
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Books">
