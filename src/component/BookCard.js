@@ -1,14 +1,17 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, Text, View, Image } from 'react-native'
 import React, { useState } from 'react'
 import StarRating from 'react-native-star-rating';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import ImagedCardView from 'react-native-imaged-card-view';
+
 
 const BookCard = React.memo((props) => {
 
     return (
+
         <View style={styles.mainContainer}>
 
-            <TouchableOpacity>
+            <View>
                 <View>
                     <Image source={{ uri: props.ImageLink }}
                         style={{ width: 150, height: 250, borderRadius: 15 }} />
@@ -20,7 +23,7 @@ const BookCard = React.memo((props) => {
                             <MaterialCommunityIcons name='cards-heart-outline' color={'red'} size={25} />
                     }
                 </View>
-            </TouchableOpacity>
+            </View>
             <View>
                 <View>
                     <Text style={styles.bookTitle} numberOfLines={1}>{props.BookTitle.length > 25 ? props.BookTitle.substring(0, 25) + "..." : props.BookTitle}</Text>
@@ -48,6 +51,20 @@ const BookCard = React.memo((props) => {
                 </View>
             </View>
         </View>
+        // <>
+        //     <ImagedCardView stars={5}
+        //         reviews={456}
+        //         ratings={4.5}
+        //         title={props.bookTitle}
+        //         rightSideValue={props.price}
+        //         subtitle={props.author}
+        //         leftSideValue="3 Days"
+        //         backgroundColor="#ff6460"
+        //         source={{
+        //             uri: props.ImageLink
+        //         }} />
+
+        // </>
     )
 })
 
